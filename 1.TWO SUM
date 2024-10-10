@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int,int> mmp;
+        for(int i=0;i<nums.size();i++)
+        {
+            int remain=target-nums[i];
+            if(mmp.find(remain)!= mmp.end())
+            {
+                return{mmp[remain],i};
+            }
+            mmp[nums[i]]=i;
+        }
+        return{-2,-2};
+    } 
+};
