@@ -1,0 +1,43 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<int> k;
+        int i=0;
+        while(i<s.length())
+        {
+            if(s[i]=='(' || s[i]=='[' || s[i]=='{' )
+            {
+                k.push(s[i]);
+            }
+            else if(!k.empty())
+            {
+                if(s[i]==')' && k.top()=='(')
+                {
+                    k.pop();
+                }
+                else if(s[i]==']' && k.top()=='[')
+                {
+                    k.pop();
+                }
+                else if(s[i]=='}' && k.top()=='{')
+                {
+                    k.pop();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            i++;
+        }
+        if(k.empty())
+        {
+            return true;
+        }
+        return false;
+    }
+};
